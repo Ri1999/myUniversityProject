@@ -1,0 +1,13 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.explorebox{
+    background: linear-gradient(135deg, #F7CE4C 10%, #FFF3B0 10%, #F4A300 100%);
+    width: 100vw;
+    height: 100vh;
+    font-family: "Edu TAS Beginner", cursive;
+   font-weight: 400;
+   font-style: normal;
+}

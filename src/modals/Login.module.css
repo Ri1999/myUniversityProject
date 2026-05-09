@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Science+Gothic:wght@100..900&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.modalOverlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    font-family: "Science Gothic", sans-serif;
+}
+.modalContent h1{
+    color: whitesmoke;
+    text-align: center;
+}
+/*  */
+.modalContent{
+    background: rgba(000, 000, 000, 1.0);
+    position: relative;
+    border: 1px solid #F7CE4C;;
+    padding-bottom: 50px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 8px;
+}
+.loginForm{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 380px;
+    height: 200px;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+/* .loginForm h1{} */
+
+.loginForm input{
+    background-color: #4e4e4e;
+    color: #F7CE4C;
+    border: 3px solid #F7CE4C;
+    text-align: center;
+    font-size: 1.2rem;
+    font-family: "Science Gothic", sans-serif;
+    border-radius: 6px;
+    width: 90%px;
+    height: 40px;
+    margin-left: 5px;
+
+}
+.loginForm button{
+    font-family: "Science Gothic", sans-serif;
+    width: 100px;
+    font-size: 1.2rem;
+    padding: 6px;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: black;
+    color: whitesmoke;
+    font-weight: 600;
+    transition: 0.2s ease-in-out;
+}
+.loginForm button:hover{
+    color: black;
+    background-color: #F7CE4C;
+}
+
+.closeBtn {
+    font-family: "Science Gothic", sans-serif;
+    position: absolute;
+    border-radius: 15%;
+    left: 390px;
+    top: 10px;
+    transition: transform 0.2s;
+}
+.closeBtn:hover {
+    transform: scale(1.2);
+    color: red;
+}
+
+/* about area */
+.aboutModal{
+    font-family:'Times New Roman', Times, serif;
+    position: relative;
+    background-color: #e5e5e5;
+    /* background: linear-gradient(135deg, #F7CE4C 10%, #FFF3B0 10%, #F4A300 100%); */
+    width: 600px;
+    height: 300px;
+    border: 3px solid black;
+    border-radius: 8px;
+    overflow: scroll;
+    padding-top: 20px;
+    padding-bottom: 60px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.aboutModal p{
+    text-align: justify;
+    font-size: 1.2rem;
+}
+.aboutBtn{
+    margin-top: 15px;
+    padding: 6px;
+    font-family: "Science Gothic", sans-serif;
+    border-radius: 8px;
+    
+}
+.aboutBtn:hover {
+    transform: scale(1.2);
+    color: red; 
+}
+
+/* privacy policy */
+
+.privacyModal{
+    position: relative;
+    background-color: #e5e5e5;
+    /* background: linear-gradient(135deg, #F7CE4C 10%, #FFF3B0 10%, #F4A300 100%); */
+    width: 600px;
+    height: 300px;
+    border: 3px solid black;
+    border-radius: 8px;
+    overflow: scroll;
+    padding-top: 20px;
+    padding-bottom: 60px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+    font-family:'Times New Roman', Times, serif;
+    
+    align-items: center;
+}
+.privacyModal p{
+    text-align: justify;
+    font-size: 1.2rem;
+}
+.privacyBtn{
+    margin-top: 15px;
+    padding: 6px;
+    /* font-family: "Supermercado One", sans-serif; */
+    font-family: "Science Gothic", sans-serif;
+    border-radius: 8px;
+}
+.privacyBtn:hover {
+    transform: scale(1.2);
+    color: red; 
+}
+/* Terms & Conditions */
+.termsModal{
+    position: relative;
+    background-color: #e5e5e5;
+    /* background: linear-gradient(135deg, #F7CE4C 10%, #FFF3B0 10%, #F4A300 100%); */
+    width: 600px;
+    height: 500px;
+    border: 3px solid black;
+    border-radius: 8px;
+    overflow: scroll;
+    padding-top: 20px;
+    padding-bottom: 60px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+    font-family:'Times New Roman', Times, serif;
+    /* font-family: "Supermercado One", sans-serif; */
+    align-items: center;
+}
+.termsModal ul, h4{
+    align-self: flex-start;
+}
+.termsModal p{
+    text-align: justify;
+    font-size: 1.2rem;
+}
+.termBtn{
+    margin-top: 15px;
+    padding: 6px;
+    /* font-family: "Supermercado One", sans-serif; */
+    font-family: "Science Gothic", sans-serif;
+    border-radius: 8px;
+}
+.termBtn:hover{
+    transform: scale(1.2);
+    color: red; 
+}
