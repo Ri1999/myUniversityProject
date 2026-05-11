@@ -5,8 +5,10 @@ import { useNavigate } from "react-router-dom";
 
 const Header = ({children}) => {
 
-  const student_page = useNavigate();
-  const teacher_page = useNavigate()
+  // const student_page = useNavigate();
+  // const teacher_page = useNavigate();
+
+  const navigate_page = useNavigate();
 
 
   return (
@@ -26,7 +28,7 @@ const Header = ({children}) => {
           <form className='form-content flexy' >
             <a onClick={function(e){
               e.preventDefault()
-              student_page("/studentSignUp")
+              navigate_page("/=student-sign-up")
             }} 
             
             href="">Sign up as Student</a>
@@ -34,7 +36,7 @@ const Header = ({children}) => {
             
             <a onClick={function(e){
               e.preventDefault();
-              teacher_page("/teacherSignUp")
+              navigate_page("/=teacher-sign-up")
             }} href="">Sign up as Teacher</a>
             <h3>Join Bee Community !</h3>
           </form>

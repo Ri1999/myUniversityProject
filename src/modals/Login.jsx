@@ -25,7 +25,7 @@ const Login = ({ isOpen, onClose }) => {
 
         if((email && email==="test@bee.com")&&(password && password==="Passw0rd")){
             onClose();
-            navigate_page("/ExploreTeacherList")
+            navigate_page("/explore-teacher-list")
         }
         else{
             alert("The credentials you entered are incorrect")

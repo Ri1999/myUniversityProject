@@ -7,20 +7,17 @@ const TeacherSignup = () => {
     fullname: "",
     hqualification: "",
     experience: "",
-    expertise: "",
     employment:"private",
+    expertise: "",
+    email: "",
+    password: "",
+    conformpassword:"",
+    dob: "",
     phonenumber:"",
+    gender: "",
     city: "",
     pincode:"",
     bio:"",
-
-
-  email: "",
-  password: "",
-  dob: "",
-  gender: ""
-
-
   })
 
 
@@ -39,6 +36,7 @@ const TeacherSignup = () => {
     fullname,
     email,
     password,
+    conformpassword,
     phonenumber
 
   } = teacherData;  // taken as destructure from state actual filed to validate only
@@ -46,7 +44,11 @@ const TeacherSignup = () => {
   // empty string check
   if (!fullname.trim()) return "Name required";
   if (!email.trim()) return "Email required";
-  if (!password.trim() && password.length < 6) return "Password required";
+  if (!password.trim() ) return "Password required";
+  if(password.length < 6) return "Password must be at least 6 characters";
+  if(password.trim()!==conformpassword.trim()){
+    return "Password didnot matched !";
+  }
 
   if (!/^[0-9]{10}$/.test(phonenumber)) {
   return "Phone must be 10 digits";
@@ -57,7 +59,7 @@ const TeacherSignup = () => {
 
 };
   
-  const handleSumbit = (e)=>{
+  const handleSubmit = (e)=>{
     e.preventDefault();
 
     // invoke method
@@ -91,7 +93,7 @@ const TeacherSignup = () => {
     <div className="teacherOuterBox" >
       <div className="teacherInnerBox">
         <h2>Teacher Registration Form</h2>
-        <form onSubmit={handleSumbit} className="teacherform">
+        <form onSubmit={handleSubmit} className="teacherform">
           
           <label htmlFor="name">Teacher Name:</label>
 
@@ -119,6 +121,9 @@ const TeacherSignup = () => {
 
           <label htmlFor="pass">Password:</label>
           <input onChange={handleInputChange} name="password" value={teacherData.password} required type="password" id="pass" placeholder="********" />
+
+          <label htmlFor="pass">Conform Password:</label>
+          <input onChange={handleInputChange} name="conformpassword" value={teacherData.conformpassword} required type="password" id="conformpass" placeholder="********" />
 
           <label htmlFor="dob">Date of Birth:</label>
           <input onChange={handleInputChange} name="dob" value={teacherData.dob} required type="date" id="dob" />

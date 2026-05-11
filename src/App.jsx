@@ -27,18 +27,18 @@ function App() {
         </>
       } />
 
-      <Route path="/ExploreTeacherList" element={
+      <Route path="/explore-teacher-list" element={
         <>
         <Explore/>
         </>        
       }/>
-      <Route path="/studentSignUp" element={
+      <Route path="/=student-sign-up" element={
         <>
         <StudentSignup/>
         </>
       } />
 
-      <Route path="/teacherSignUp" element={
+      <Route path="/=teacher-sign-up" element={
         <>
         <TeacherSignup/>
         </>
