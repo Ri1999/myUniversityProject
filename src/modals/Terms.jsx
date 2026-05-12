@@ -25,7 +25,7 @@ const Terms = ({close}) => {
             <h4>Project Bee does not process or handle payments between students and teachers. Any fees, payments, or learning arrangements are managed directly between users at their own responsibility.</h4>
             <br />
             <h4>Project Bee is not responsible for disputes, losses, or issues related to personal transactions made outside the platform.</h4>
-            <button className={styles.termBtn} onClick={close} type="button">close</button>
+            <button className={styles.termBtn} onClick={close} type="button">Close</button>
         </div>
     </div>
   )

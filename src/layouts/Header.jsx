@@ -28,7 +28,7 @@ const Header = ({children}) => {
           <form className='form-content flexy' >
             <a onClick={function(e){
               e.preventDefault()
-              navigate_page("/=student-sign-up")
+              navigate_page("/student-sign-up")
             }} 
             
             href="">Sign up as Student</a>
@@ -36,7 +36,7 @@ const Header = ({children}) => {
             
             <a onClick={function(e){
               e.preventDefault();
-              navigate_page("/=teacher-sign-up")
+              navigate_page("/teacher-sign-up")
             }} href="">Sign up as Teacher</a>
             <h3>Join Bee Community !</h3>
           </form>

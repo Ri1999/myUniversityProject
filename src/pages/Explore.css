@@ -26,19 +26,146 @@
     display: grid;
     gap: 8px;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 120px 1fr 80px;
+    grid-template-rows: 130px 1fr 80px;
 }
 .searchArea{
     
     grid-column: span 4;
+    color: whitesmoke
 }
+.searchArea p{
+    color: #F7CE4C;
+}
+.upperSearchArea{
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 10px;
+}
+.upperSearchArea h2{
+    font-size: 1.4rem;
+}
+.lowerSearchArea{
+    border-radius: 8px;
+    justify-content: center;
+}
+.searchForm{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 520px;
+}
+
+.searchForm input{
+    width: 100%;
+    padding: 14px 30px 14px 16px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1.2rem;
+}
+
+.searchForm button{
+    position: absolute;
+    right: 12px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .filterArea{
-    grid-column: span 1
+    grid-column: span 1;
+    color: whitesmoke;
 }
+.mobile-text{
+    display: none;
+}
+.filtering{
+    display: grid;
+    gap: 8px;
+    grid-template-columns: 2fr;
+}
+.filtering select, .filtering input{
+    font-family: "Edu TAS Beginner", cursive;
+    font-size: 1.2rem;
+    border-radius: 6px;
+}
+.filterBtn{
+    height: 100px;
+    width: 100%;
+    justify-content:space-evenly;
+    gap: 60px;
+}
+.filterBtn button{
+    font-family: "Edu TAS Beginner", cursive;
+    font-size: 1.1rem;
+    background-color: black;
+    color: whitesmoke;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s ease-out;
+}
+.filterBtn button:hover{
+    color: black;
+    background-color: #F7CE4C;
+}
+
+
+
+
+
+
+
 .listArea{
     grid-column: span 3;
     overflow-y: auto;
 }
 .exploreFooter{
     grid-column: span 4;
+}
+
+/* media quaries */
+@media only screen and (max-width:768px){
+
+    .componentBox{
+        grid-template-columns: 1fr;
+    }
+    .searchArea, .filterArea, .listArea,.exploreFooter{
+        grid-column: span 1;
+    }
+    .searchArea{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0;
+    }
+    .upperSearchArea p{
+        display: none;
+    }
+    .searchForm{
+        width: 100%;
+    }
+    .searchForm input{
+        font-size: 1rem;
+    }
+    .mobile-text{
+        display: flex;
+        justify-content: center;
+    }
+    .desktop-text{
+        display: none;
+    }
+    .filtering{
+        overflow-y: auto;
+        overflow-x: hidden;
+        max-height: 120px;
+    }
+    .filterBtn{
+        height: 50px;
+    }
+    
+
 }

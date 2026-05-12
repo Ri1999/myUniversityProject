@@ -110,7 +110,7 @@ const TeacherSignup = () => {
             <option value="private">Private Tutor</option>
             <option value="govt">Govt. School Teacher</option>
             <option value="freelance">Pvt. School Teacher</option>
-            <option value="corporate"> Trainer</option>
+            <option value="corporate">Trainer</option>
           </select>
 
           <label htmlFor="subjects">Areas of Expertise:</label>
