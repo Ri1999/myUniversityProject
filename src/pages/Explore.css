@@ -4,10 +4,41 @@
     box-sizing: border-box;
 }
 .explorebox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
     background: linear-gradient(135deg, #F7CE4C 10%, #FFF3B0 10%, #F4A300 100%);
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    min-height: 100vh;
     font-family: "Edu TAS Beginner", cursive;
    font-weight: 400;
    font-style: normal;
+}
+
+.componentBox{
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    min-height: 95vh;
+    width: 100%;
+    padding: 12px;
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 120px 1fr 80px;
+}
+.searchArea{
+    
+    grid-column: span 4;
+}
+.filterArea{
+    grid-column: span 1
+}
+.listArea{
+    grid-column: span 3;
+    overflow-y: auto;
+}
+.exploreFooter{
+    grid-column: span 4;
 }

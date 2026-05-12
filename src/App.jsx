@@ -9,6 +9,10 @@ import Explore from "./pages/Explore";
 import "./layouts/layout.css";
 import TeacherSignup from "./pages/TeacherSignup"
 import StudentSignup from "./pages/StudentSignup"
+import SearchBar from "./pages/SearchBar";
+import ExploreFooter from "./pages/ExploreFooter";
+import FilterArea from "./pages/FilterArea";
+import ListArea from "./pages/ListArea";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -29,7 +33,12 @@ function App() {
 
       <Route path="/explore-teacher-list" element={
         <>
-        <Explore/>
+        <Explore>
+          <SearchBar/>
+          <FilterArea/>
+          <ListArea/>
+          <ExploreFooter/>
+        </Explore>
         </>        
       }/>
       <Route path="/=student-sign-up" element={

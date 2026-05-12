@@ -1,9 +1,14 @@
 
 import "./Explore.css";
 
-const Explore = () => {
+const Explore = ({children}) => {
   return (
-    <div className="explorebox" >Explore</div>
+    <div className="explorebox" >
+      <div className="componentBox" >
+        {children}
+      </div>
+
+    </div>
   )
 }
 
