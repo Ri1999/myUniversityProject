@@ -26,32 +26,51 @@ const StudentSignup = () => {
       [e.target.name]: e.target.value
     })
   }
-  const validateFields = () => {
 
-  const {
-    fullname,
-    email,
-    password,
-    conformpassword,
-    phonenumber
+  const [errors, setErrors] = useState({
 
-  } = studentdata;  // taken as destructure from state actual filed to validate only
+    fullname: "",
+    email: "",
+    password: "",
+    conformpassword: "",
+    phonenumber: "",
 
-  // empty string check
-  if (!fullname.trim()) return "Name required";
-  if (!email.trim()) return "Email required";
-  if (!password.trim() ) return "Password required";
-  if(password.length < 6) return "Password must be at least 6 characters";
-  if(password.trim()!==conformpassword.trim()){
-    return "Password didnot matched !";
+  })
+
+ const validateFields = () => {
+
+  let newErrors = {};
+
+  if (!studentdata.fullname.trim()) {
+    newErrors.fullname = "Name required";
   }
 
-  if (!/^[0-9]{10}$/.test(phonenumber)) {
-  return "Phone must be 10 digits";
-}
+  if (!studentdata.email.trim()) {
+    newErrors.email = "Email required";
+  }
 
+  if (!studentdata.password.trim()) {
+    newErrors.password = "Password required";
+  }
 
-  return null;
+  if (studentdata.password.length < 6) {
+    newErrors.password = "Password must be at least 6 characters";
+  }
+
+  if (
+    studentdata.password.trim() !==
+    studentdata.conformpassword.trim()
+  ) {
+    newErrors.conformpassword = "Passwords do not match";
+  }
+
+  if (!/^[0-9]{10}$/.test(studentdata.phonenumber)) {
+    newErrors.phonenumber = "Phone must be 10 digits";
+  }
+
+  setErrors(newErrors);
+
+  return Object.keys(newErrors).length === 0;
 
 };
 
@@ -59,8 +78,8 @@ const handleSubmit=(e)=>{
   e.preventDefault();
 
   const myError = validateFields();
-  if(myError){
-    alert(myError);
+
+  if(!myError){
     return
   }
 
@@ -90,6 +109,7 @@ const handleSubmit=(e)=>{
           
           <label htmlFor="name">Student Name:</label>
           <input onChange={handleInputChange} name="fullname" value={studentdata.fullname} required type="text" id="name" placeholder="Full Name" autoFocus/>
+          {errors.fullname && <p>{errors.fullname}</p>}
 
           <label htmlFor="qualification">Highest Qualification:</label>
           <input onChange={handleInputChange}  name="hqualification" value={studentdata.hqualification} required type="text" id="qualification" placeholder="e.g. M.Sc Mathematics" />
@@ -99,18 +119,24 @@ const handleSubmit=(e)=>{
 
           <label htmlFor="email">Email:</label>
           <input onChange={handleInputChange}  name="email" value={studentdata.email} required type="email" id="email" placeholder="email@example.com" />
+          {errors.email && (
+            <p className="errorText">{errors.email}</p>
+          )}
 
           <label htmlFor="pass">Password:</label>
           <input onChange={handleInputChange}  name="password" value={studentdata.password} required type="password" id="pass" placeholder="********" />
+          {errors.password && <p>{errors.password}</p>}
 
           <label htmlFor="pass">Conform Password:</label>
           <input onChange={handleInputChange}  name="conformpassword" value={studentdata.conformpassword} required type="password" id="conformpass" placeholder="********" />
+          {errors.conformpassword && <p>{errors.conformpassword}</p>}
 
           <label htmlFor="dob">Date of Birth:</label>
           <input onChange={handleInputChange}  name="dob" value={studentdata.dob} required type="date" id="dob" />
 
           <label htmlFor="mobile">Mobile Number:</label>
           <input onChange={handleInputChange}  name="phonenumber" value={studentdata.phonenumber} required type="tel" id="mobile" placeholder="+91..." />
+          {errors.phonenumber && <p>{errors.phonenumber}</p>}
 
           <label htmlFor="gender">Gender:</label>
           <select onChange={handleInputChange}  name="gender" value={studentdata.gender} required id="gender">

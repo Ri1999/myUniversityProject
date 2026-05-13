@@ -15,21 +15,46 @@ import { useState } from "react";
 const Login = ({ isOpen, onClose }) => {
 
     const navigate_page = useNavigate();
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    // errors
+
+    const [errors, setErrors] = useState({
+
+        email: "",
+        password: ""
+   })
 
     // sumbit form
 
     const handleSubmit =(e) => {
         e.preventDefault()
 
-        if((email && email==="test@bee.com")&&(password && password==="Passw0rd")){
-            onClose();
-            navigate_page("/explore-teacher-list")
+        setErrors({
+            email:"",
+            password:"",
+        })
+        if(email !== "test@bee.com"){
+            setErrors({
+                email:"Invalid email",
+                password:"",
+            })
+            return
+        }
+        if(password !=="Passw0rd"){
+            setErrors({
+                email:"",
+                password:"Invalid password"
+            })
+
+            return
         }
         else{
-            alert("The credentials you entered are incorrect")
+            navigate_page("/explore-teacher-list")
         }
+
 
         
     }
@@ -51,6 +76,8 @@ const Login = ({ isOpen, onClose }) => {
                     <input value={email} onChange={function(e){
                         setEmail(e.target.value)
                     }} required type="email" name="email" id="" placeholder=' your email id ' />
+
+                    {errors.email && <p className="emailError" >{errors.email}</p>}
                 </div>
                 <div>
                     <RiLockPasswordFill color="gold" size={19} />
@@ -58,6 +85,7 @@ const Login = ({ isOpen, onClose }) => {
                     <input value={password} onChange={function(e){
                         setPassword(e.target.value)
                     }} required type="password" name="" id="" placeholder=' your password ' />
+                    {errors.password && <p className={styles.passwordError} >{errors.password}</p>}
                 </div>
                 <button type="submit">Sign In</button>
             </form>

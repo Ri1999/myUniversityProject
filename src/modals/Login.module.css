@@ -55,6 +55,7 @@
     border: 3px solid #F7CE4C;
     text-align: center;
     font-size: 1.2rem;
+    font-family: "Ubuntu", sans-serif;
     /* font-family: "Science Gothic", sans-serif; */
     border-radius: 6px;
     width: 90%px;
@@ -90,6 +91,13 @@
 .closeBtn:hover {
     transform: scale(1.2);
     color: red;
+}
+
+.loginForm p{
+    color: #f78787;
+    text-align: center;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 1rem;
 }
 
 /* about area */

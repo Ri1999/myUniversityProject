@@ -29,33 +29,47 @@ const TeacherSignup = () => {
     })
 
   }
+  const [errors, setErrors] = useState({
+
+    fullname: "",
+    email: "",
+    password: "",
+    conformpassword: "",
+    phonenumber: "",
+
+  })
 
   const validateFields = () => {
 
-  const {
-    fullname,
-    email,
-    password,
-    conformpassword,
-    phonenumber
-
-  } = teacherData;  // taken as destructure from state actual filed to validate only
-
-  // empty string check
-  if (!fullname.trim()) return "Name required";
-  if (!email.trim()) return "Email required";
-  if (!password.trim() ) return "Password required";
-  if(password.length < 6) return "Password must be at least 6 characters";
-  if(password.trim()!==conformpassword.trim()){
-    return "Password didnot matched !";
+    const newError ={};
+    if(!teacherData.fullname.trim()){
+      newError.fullname="Name required"
+    }
+    if(!teacherData.email.trim()){
+      newError.email="Email required"
+    }
+    if(!teacherData.password.trim()){
+      newError.password="Password required"
+    }
+    if(teacherData.password.length <6){
+      newError.password="Password must be at least 6 characters"
+    }
+    if(teacherData.password.trim()!==
+  teacherData.conformpassword.trim()){
+    newError.conformpassword="Passwords do not match"
+  }
+  if(!/^[0-9]{10}$/.test(teacherData.phonenumber)){
+    newError.phonenumber = "Phone must be 10 digits";
   }
 
-  if (!/^[0-9]{10}$/.test(phonenumber)) {
-  return "Phone must be 10 digits";
-}
+
+  setErrors(newError);
+
+  return Object.keys(newError).length === 0;
 
 
-  return null;
+
+
 
 };
   
@@ -65,8 +79,7 @@ const TeacherSignup = () => {
     // invoke method
     const myError = validateFields();
     // handle error message
-    if(myError){
-      alert(myError);
+    if(!myError){
       return
     }
 
@@ -98,6 +111,7 @@ const TeacherSignup = () => {
           <label htmlFor="name">Teacher Name:</label>
 
           <input onChange={handleInputChange} name="fullname" value={teacherData.fullname} required type="text" id="name" placeholder="Prof. / Mr. / Ms." autoFocus />
+          {errors.fullname && <p>{errors.fullname}</p>}
 
           <label htmlFor="qualification">Highest Qualification:</label>
           <input onChange={handleInputChange} name="hqualification" value={teacherData.hqualification} required type="text" id="qualification" placeholder="e.g. M.Sc Mathematics" />
@@ -118,18 +132,22 @@ const TeacherSignup = () => {
 
           <label htmlFor="email">Email:</label>
           <input onChange={handleInputChange} name="email" value={teacherData.email}  required type="email" id="email" placeholder="email@example.com" />
+          <p className="errorText">{errors.email}</p>
 
           <label htmlFor="pass">Password:</label>
           <input onChange={handleInputChange} name="password" value={teacherData.password} required type="password" id="pass" placeholder="********" />
+          {errors.password && <p>{errors.password}</p>}
 
           <label htmlFor="pass">Conform Password:</label>
           <input onChange={handleInputChange} name="conformpassword" value={teacherData.conformpassword} required type="password" id="conformpass" placeholder="********" />
+          {errors.conformpassword && <p>{errors.conformpassword}</p>}
 
           <label htmlFor="dob">Date of Birth:</label>
           <input onChange={handleInputChange} name="dob" value={teacherData.dob} required type="date" id="dob" />
 
           <label htmlFor="mobile">Mobile Number:</label>
           <input onChange={handleInputChange} name="phonenumber" value={teacherData.phonenumber} required type="tel" id="mobile" placeholder="+91..." />
+          {errors.phonenumber && <p>{errors.phonenumber}</p>}
 
           <label htmlFor="gender">Gender:</label>
           <select onChange={handleInputChange} name="gender" value={teacherData.gender} required id="gender">
