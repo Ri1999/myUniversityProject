@@ -115,15 +115,87 @@
 }
 
 
-
-
-
-
-
 .listArea{
+
+    margin-top: 30px;
     grid-column: span 3;
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
 }
+.cardsGrid{
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+.cardContainer{
+    font-family: "Ubuntu", sans-serif;
+    color: #e9eaec;
+    padding: 12px;
+    background-color: #0b0c0c;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.cardContainer h2{
+    font-family: "Edu TAS Beginner", cursive;
+}
+.contactRow{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.paginationControls{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+.paginationControls p{
+    font-family: "Ubuntu", sans-serif;
+    color: whitesmoke;
+    font-size: 1rem;
+}
+.paginationControls button{
+    font-family: "Ubuntu", sans-serif;
+    font-size: 1rem;
+    background-color: black;
+    color: #F7CE4C;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.paginationControls button:disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+
+.icon-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  
+  /* Centers the icon perfectly inside the button */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+
+
+
 .exploreFooter{
     grid-column: span 4;
 }

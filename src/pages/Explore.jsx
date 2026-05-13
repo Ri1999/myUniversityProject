@@ -1,6 +1,7 @@
 
 import "./Explore.css";
 
+
 const Explore = ({children}) => {
   return (
     <div className="explorebox" >
