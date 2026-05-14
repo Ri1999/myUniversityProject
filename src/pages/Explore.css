@@ -148,6 +148,9 @@
     align-items: center;
     justify-content: space-between;
 }
+.contactRow button{
+    color: #F7CE4C;
+}
 .paginationControls{
     display: flex;
     align-items: center;
@@ -189,11 +192,6 @@
   align-items: center;
   justify-content: center;
 }
-
-
-
-
-
 
 
 .exploreFooter{

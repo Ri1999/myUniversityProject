@@ -1,7 +1,13 @@
 import "./Explore.css";
 import { ImInfo } from "react-icons/im";
+import { useState } from "react";
+import FullDetailsCard from "./FullDetailsCard";
 
 const TeacherCard = ({ teacher }) => {
+
+  // for full details modal
+
+    const [fulldetails, setFulldetails] = useState(false);
 
   return (
 
@@ -21,18 +27,29 @@ const TeacherCard = ({ teacher }) => {
       
       <div className="contactRow">
 
-        <h3>
+        {/* <h3>
           Contact: {teacher.phonenumber}
-        </h3>
+        </h3> */}
 
         <button
+
+          onClick={function(){
+            setFulldetails(true)
+          }}
+
           className="icon-button"
           type="button"
         >
-          <ImInfo color="gold" />
+          <ImInfo color="gold" />Full details...
         </button>
 
       </div>
+
+      {/* show modal */}
+
+      {fulldetails && <FullDetailsCard  closeDetails={function(){setFulldetails(false)}}  DetailsData={teacher} /> }
+
+
 
     </div>
   )

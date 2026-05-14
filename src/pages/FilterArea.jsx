@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { GiVanillaFlower } from "react-icons/gi";
 import "./Explore.css";
 const FilterArea = () => {
@@ -13,7 +13,8 @@ const FilterArea = () => {
       <div className="filterparent">
         <div className="filtering">
         {/* subject */}
-        <label>Subject</label>
+
+        {/* <label>Subject</label>
         <select>
           <option value="">English</option>
           <option value="">Bengali</option>
@@ -22,10 +23,14 @@ const FilterArea = () => {
           <option value="">Biology</option>
           <option value="">Mathematics</option>
           <option value="">Sanskrit</option>
-        </select>
+        </select> */}
+
         {/* City */}
-        <label htmlFor="">Garden</label>
-        <input type="text" placeholder='Enter City Name' />
+
+        {/* <label htmlFor="">Garden</label>
+        <input type="text" placeholder='Enter City Name' /> */}
+
+
 
         {/* expertise */}
         <label htmlFor="">Flight Hours</label>

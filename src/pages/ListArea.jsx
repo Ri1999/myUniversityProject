@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import TeacherCard from './TeacherCard';
 import Data from "../Database/Data"
+import FullDetailsCard from './FullDetailsCard';
 import "./Explore.css";
+import teachers from '../Database/Data';
 
 const ListArea = () => {
 
@@ -11,7 +13,7 @@ const ListArea = () => {
   // only 4 cards
   const cardsPerPage = 4;
 
-  // indexing
+  // index
   const lastIndex = currentPage * cardsPerPage;
   const firstIndex = lastIndex - cardsPerPage;
 
@@ -22,6 +24,7 @@ const ListArea = () => {
   // totalpage count
   const totalPages =
     Math.ceil(Data.length / cardsPerPage);
+
 
   return (
 
@@ -38,6 +41,7 @@ const ListArea = () => {
           />
 
         ))}
+        
 
       </div>
 
@@ -69,6 +73,7 @@ const ListArea = () => {
         </button>
 
       </div>
+      
 
     </div>
   )
