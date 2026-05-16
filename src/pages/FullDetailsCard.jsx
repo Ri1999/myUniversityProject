@@ -1,5 +1,4 @@
 import "./Details.css"
-import { FaPaperclip } from "react-icons/fa6";
 
 const FullDetailsCard = ({closeDetails, DetailsData}) => {
   return (

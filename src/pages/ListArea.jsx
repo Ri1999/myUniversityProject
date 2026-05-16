@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import TeacherCard from './TeacherCard';
 import Data from "../Database/Data"
-import FullDetailsCard from './FullDetailsCard';
+
 import "./Explore.css";
-import teachers from '../Database/Data';
+
 
 const ListArea = () => {
 

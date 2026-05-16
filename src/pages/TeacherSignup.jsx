@@ -167,7 +167,7 @@ const TeacherSignup = () => {
 
           <label htmlFor="pass">Conform Password:</label>
           <div className="inputGroup">
-            <input onChange={handleInputChange} name="conformpassword" value={teacherData.conformpassword} required type="password" id="conformpass" placeholder="********" />
+            <input onChange={handleInputChange} name="conformpassword" value={teacherData.conformpassword} required type="password" id="conformpassword" placeholder="********" />
           {errors.conformpassword && <p>{errors.conformpassword}</p>}
 
           </div>

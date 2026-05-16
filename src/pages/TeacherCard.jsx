@@ -45,9 +45,12 @@ const TeacherCard = ({ teacher }) => {
 
       </div>
 
-      {/* show modal */}
+      {/* show details modal */}
 
       {fulldetails && <FullDetailsCard  closeDetails={function(){setFulldetails(false)}}  DetailsData={teacher} /> }
+
+      {/* show update info modal for users(teacher+student) */}
+      
 
 
 
