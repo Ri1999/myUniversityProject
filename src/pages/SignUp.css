@@ -91,6 +91,16 @@
     font-weight: bold;
     transform: scale(1.05);
 }
+.inputGroup{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.inputGroup p{
+    color: #f78787;
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
 
 /* teacher parts are merge into them */
 
