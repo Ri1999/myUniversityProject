@@ -33,13 +33,10 @@ function App() {
 
       <Route path="/explore-teacher-list" element={
         
-        <Explore>
-          <SearchBar/>
-          <FilterArea/>
-          <ListArea/>
-          <ExploreFooter/>
-        </Explore>       
+        <Explore/>
+                
       }/>
+      
       <Route path="/student-sign-up" element={
         <StudentSignup/>
       } />

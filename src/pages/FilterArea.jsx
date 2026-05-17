@@ -1,7 +1,26 @@
 
 import { GiVanillaFlower } from "react-icons/gi";
 import "./Explore.css";
-const FilterArea = () => {
+const FilterArea = 
+
+
+({selectedExperience,
+  setSelectedExperience,
+
+  selectedEmployment,
+  setSelectedEmployment,
+
+resetFilters}) => {
+
+    // test after all thing completed down there
+    console.log(selectedExperience)
+    console.log(selectedEmployment)
+
+    // caught errors - my fault actually i am not add values inside <option> so its like value="" , so i must dix that
+
+
+
+
   return (
     <div className='filterArea' >
 
@@ -33,26 +52,54 @@ const FilterArea = () => {
 
 
         {/* expertise */}
+
+        {/*  after receiving props add parameters here */}
         <label htmlFor="">Flight Hours</label>
-        <select>
-          <option value="">0-2 Years</option>
-          <option value="">3-5 Years</option>
-          <option value="">5+ Years</option>
-          <option value="">10+ Years</option>
+        <select
+        value={selectedExperience}
+        onChange={function(e){
+          setSelectedExperience(e.target.value)
+        }}
+        
+        >
+          {/* add this default optaion after prop */}
+          <option value="">All Experience</option> 
+
+
+          <option value="0-2" >0-2 Years</option>
+          <option value="3-5" >3-5 Years</option>
+          <option value="5+" >5+ Years</option>
+          <option value="10+" >10+ Years</option>
         </select>
 
         {/* type of tutor */}
+
+        {/* same goes here too add params */}
         <label htmlFor="">Colony Role</label>
-        <select>
-          <option value="">Solitary Bee / Private Tutor</option>
-          <option value="">State Protector/ Govt. School Teacher</option>
-          <option value="">Hive Guardian / Pvt. School Teacher</option>
-          <option value="">Waggle Dancer / Trainer</option>
+        <select
+        value={selectedEmployment}
+        onChange={function(e){
+          setSelectedEmployment(e.target.value)
+        }}
+        
+        >
+          {/* add this default optaion after prop */}
+          <option value="">All Roles</option> 
+
+          <option value="private" >Solitary Bee / Private Tutor</option>
+          <option value="govt" >State Protector/ Govt. School Teacher</option>
+          <option value="freelance" >Hive Guardian / Pvt. School Teacher</option>
+          <option value="corporate" >Waggle Dancer / Trainer</option>
         </select>
       </div>
       <div className="filterBtn flexy">
-        <button>Apply</button>
-        <button>Reset</button>
+
+        {/*  as select are real time applied so no need to apply button now
+         */}
+        {/* <button>Apply</button> */}
+
+        {/*  for reset we go explore again, do it when all guchaa it complited */}
+        <button onClick={resetFilters} >Reset</button>
       </div>
 
 
