@@ -1,10 +1,12 @@
 
 import "./Explore.css";
-import { useState } from "react";
+
 import SearchBar from "./SearchBar";
 import FilterArea from "./FilterArea";
 import ListArea from "./ListArea";
 import ExploreFooter from "./ExploreFooter";
+import { useState, useEffect } from "react";
+
 
 const Explore = () => {
 
@@ -34,6 +36,56 @@ const Explore = () => {
   const [selectedEmployment, setSelectedEmployment] = useState("");
 
   // filter reset method , and we know we apss it inside <filterArea/>
+
+  const [loading, setLoading] = useState(true);
+
+  // real integrations
+
+  const [teachers, setTeachers] = useState([]);
+
+  // fethc data
+
+  useEffect(() => {
+
+  async function fetchTeachers() {
+
+    try {
+      setLoading(true);
+
+      const token = localStorage.getItem("token");
+
+      const response = await fetch(
+        "http://localhost:5000/api/teachers",
+        {
+
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+
+        }
+      );
+
+      const data = await response.json();
+
+      console.log(data);
+
+      setTeachers(data.teachers);
+
+    } catch (error) {
+
+      console.log(error);
+
+    }finally {
+      setLoading(false); // 
+    }
+  }
+
+  fetchTeachers();
+
+}, []);
+
+
+
   const resetFilters = () => {
 
   setSelectedExperience("");
@@ -88,6 +140,11 @@ const Explore = () => {
         selectedExperience = {selectedExperience}
 
         selectedEmployment = {selectedEmployment}
+
+        // real data
+
+        teachers={teachers}
+        loading={loading}
 
         
         />

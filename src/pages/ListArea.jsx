@@ -1,27 +1,33 @@
 import { useState } from 'react'
 import TeacherCard from './TeacherCard';
-import Data from "../Database/Data"
+
 
 import "./Explore.css";
 
 
 const ListArea = ({searchText,
   selectedExperience,
-  selectedEmployment
+  selectedEmployment,
+  teachers,
+  loading
 }) => {
 
 
   // testing props 
   console.log(searchText)
 
-  const filteredTeachers = Data.filter((teacher) => {
+  const safeTeachers = teachers || [];
+
+
+
+  const filteredTeachers = safeTeachers.filter((teacher) => {
 
     return (
 
       // .lowercase in for case sensitive, -> teacher.fullname.includes(searchText) this is the default pattern
       (
 
-        teacher.fullname
+        teacher.name
           .toLowerCase()
           .includes(searchText.toLowerCase())
 
@@ -33,7 +39,7 @@ const ListArea = ({searchText,
 
         ||
 
-        teacher.expertise
+        (teacher.subjects || []).join(" ")
           .toLowerCase()
           .includes(searchText.toLowerCase())
 
@@ -61,30 +67,30 @@ const ListArea = ({searchText,
 
   (
     selectedExperience === "0-2" &&
-    teacher.experience >= 0 &&
-    teacher.experience <= 2
+    teacher.yoe >= 0 &&
+    teacher.yoe <= 2
   )
 
   ||
 
   (
     selectedExperience === "3-5" &&
-    teacher.experience >= 3 &&
-    teacher.experience <= 5
+    teacher.yoe >= 3 &&
+    teacher.yoe <= 5
   )
 
   ||
 
   (
     selectedExperience === "5+" &&
-    teacher.experience >= 5
+    teacher.yoe >= 5
   )
 
   ||
 
   (
     selectedExperience === "10+" &&
-    teacher.experience >= 10
+    teacher.yoe >= 10
   )
 
 )
@@ -115,8 +121,16 @@ const ListArea = ({searchText,
     filteredTeachers.slice(firstIndex, lastIndex);
 
   // totalpage count
-  const totalPages =
-    Math.ceil(filteredTeachers.length / cardsPerPage);
+  // const totalPages =
+  //   Math.ceil(filteredTeachers.length / cardsPerPage);
+
+  const totalPages = Math.max(
+  1,
+  Math.ceil(filteredTeachers.length / cardsPerPage)
+);
+
+
+
 
 
   return (
@@ -141,7 +155,7 @@ const ListArea = ({searchText,
         {currentTeachers.map((t) => (
 
           <TeacherCard
-            key={t.id}
+            key={t._id}
             teacher={t}
           />
 

@@ -27,39 +27,68 @@ const Login = ({ isOpen, onClose }) => {
         password: ""
    })
 
-    // sumbit form
+    // sumbit form api integration
 
-    const handleSubmit =(e) => {
-        e.preventDefault()
+    const handleSubmit = async (e) => {
+
+    e.preventDefault();
+
+    setErrors({
+        email: "",
+        password: "",
+    });
+
+    try {
+
+        const response = await fetch(
+            "http://localhost:5000/api/auth/login",
+            {
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify({
+                    email,
+                    password
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        console.log(data);
+
+        if (!response.ok) {
+
+            setErrors({
+                email: " ",
+                password: data.message
+            });
+
+            return;
+        }
+
+        localStorage.setItem("token", data.token);
+
+        navigate_page("/explore-teacher-list");
+
+    } catch (error) {
+
+        console.log(error);
 
         setErrors({
-            email:"",
-            password:"",
-        })
-        if(email !== "test@bee.com"){
-            setErrors({
-                email:"Invalid email",
-                password:"",
-            })
-            return
-        }
-        if(password !=="Passw0rd"){
-            setErrors({
-                email:"",
-                password:"Invalid password"
-            })
-
-            return
-        }
-        else{
-            navigate_page("/explore-teacher-list")
-        }
-
-
-        
+            email: "",
+            password: "Server error"
+        });
     }
+};
 
 
+
+
+    
     if (!isOpen) return null;
 
   return (

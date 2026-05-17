@@ -48,12 +48,17 @@ const TeacherSignup = () => {
     if(!teacherData.email.trim()){
       newError.email="Email required"
     }
+
     if(!teacherData.password.trim()){
-      newError.password="Password required"
-    }
-    if(teacherData.password.length <6){
-      newError.password="Password must be at least 6 characters"
-    }
+  newError.password="Password required"
+}
+else if(teacherData.password.length <6){
+  newError.password="Password must be at least 6 characters"
+}
+
+
+
+    
     if(teacherData.password.trim()!==
   teacherData.conformpassword.trim()){
     newError.conformpassword="Passwords do not match"
@@ -86,7 +91,75 @@ const TeacherSignup = () => {
     async function APIcall() {
 
       try{
-        // fetch and await apis code in next
+        const response = await fetch(
+  "http://localhost:5000/api/auth/signup",
+  {
+
+    method: "POST",
+
+    headers: {
+      "Content-Type": "application/json"
+    },
+
+    body: JSON.stringify({
+
+      name: teacherData.fullname,
+
+      qualification: teacherData.hqualification,
+
+      yoe: teacherData.experience,
+
+      employment:
+        teacherData.employment === "private"
+          ? "private tutor"
+          : teacherData.employment === "govt"
+          ? "govt. school teacher"
+          : teacherData.employment === "freelance"
+          ? "private school teacher"
+          : "trainer",
+
+      subjects: teacherData.expertise
+        .split(",")
+        .map((sub) => sub.trim()),
+
+      email: teacherData.email,
+
+      password: teacherData.password,
+
+      dob: teacherData.dob,
+
+      mobNumber: teacherData.phonenumber,
+
+      gender:
+        teacherData.gender.charAt(0).toUpperCase() +
+        teacherData.gender.slice(1),
+
+      city: teacherData.city,
+
+      pincode: teacherData.pincode,
+
+      bio: teacherData.bio,
+
+      userType: "Teacher"
+
+    })
+  }
+);
+
+const data = await response.json();
+
+console.log(data);
+
+if (!response.ok) {
+
+  alert(data.message);
+
+  return;
+}
+
+localStorage.setItem("token", data.token);
+
+alert("Teacher signup successful");
 
       }catch(error){
         console.log(error);
@@ -152,7 +225,10 @@ const TeacherSignup = () => {
           <label htmlFor="email">Email:</label>
           <div>
             <input onChange={handleInputChange} name="email" value={teacherData.email}  required type="email" id="email" placeholder="email@example.com" />
-          <p className="errorText">{errors.email}</p>
+
+          {errors.email && (
+  <p className="errorText">{errors.email}</p>
+)}
           </div>
           
 

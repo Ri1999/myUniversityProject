@@ -86,10 +86,10 @@ resetFilters}) => {
           {/* add this default optaion after prop */}
           <option value="">All Roles</option> 
 
-          <option value="private" >Solitary Bee / Private Tutor</option>
-          <option value="govt" >State Protector/ Govt. School Teacher</option>
-          <option value="freelance" >Hive Guardian / Pvt. School Teacher</option>
-          <option value="corporate" >Waggle Dancer / Trainer</option>
+          <option value="private tutor">Private Tutor</option>
+<option value="govt. school teacher">Govt School Teacher</option>
+<option value="private school teacher">Private School Teacher</option>
+<option value="trainer">Trainer</option>
         </select>
       </div>
       <div className="filterBtn flexy">

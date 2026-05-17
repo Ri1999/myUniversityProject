@@ -5,8 +5,19 @@ import "./Explore.css";
 import UpdateDetails from "./UpdateDetails";
 import { GrUserAdmin } from "react-icons/gr";
 import { MdLogin } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const SearchBar = ({searchText, setSearchText}) => {
+
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+
+  localStorage.removeItem("token");
+
+  navigate("/");
+
+};
 
   // update state
 
@@ -19,7 +30,7 @@ const SearchBar = ({searchText, setSearchText}) => {
 
       <h2><GiArtificialHive size={30} /> Find the Right Teacher for Your Learning Journey <button onClick={function(){
         setUpdateModal(true)
-      }} type="button">AdminPanel <GrUserAdmin  size={20} /></button> <button type="button">LogOut <MdLogin size={20} /></button> </h2>
+      }} type="button">User Panel <GrUserAdmin  size={20} /></button> <button onClick={handleLogout} type="button">LogOut <MdLogin size={20} /></button> </h2>
       
       <p>Search by subject, expertise, or location to connect with trusted educators...</p>
       </div>

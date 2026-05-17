@@ -1,4 +1,5 @@
 import Header from "./layouts/Header";
+import ProtectedRoute from "./components/ProtectedRoute";
 import Nav from "./layouts/Nav";
 import Container from "./layouts/Container";
 import Footer from "./layouts/Footer";
@@ -9,10 +10,10 @@ import Explore from "./pages/Explore";
 import "./layouts/layout.css";
 import TeacherSignup from "./pages/TeacherSignup"
 import StudentSignup from "./pages/StudentSignup"
-import SearchBar from "./pages/SearchBar";
-import ExploreFooter from "./pages/ExploreFooter";
-import FilterArea from "./pages/FilterArea";
-import ListArea from "./pages/ListArea";
+// import SearchBar from "./pages/SearchBar";
+// import ExploreFooter from "./pages/ExploreFooter";
+// import FilterArea from "./pages/FilterArea";
+// import ListArea from "./pages/ListArea";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -31,11 +32,22 @@ function App() {
         </>
       } />
 
-      <Route path="/explore-teacher-list" element={
+      {/* <Route path="/explore-teacher-list" element={
         
         <Explore/>
                 
-      }/>
+      }/> */}
+
+      <Route
+        path="/explore-teacher-list"
+        element={
+                <ProtectedRoute>
+                  <Explore />
+                </ProtectedRoute>}
+     />
+
+
+
       
       <Route path="/student-sign-up" element={
         <StudentSignup/>
